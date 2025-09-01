@@ -1,20 +1,32 @@
-Updated for APK build test
-# VijayAI Connect
+name: Flutter Build APK
 
-This is a Flutter app integrated with Google AdMob test ads (Banner, Interstitial, Rewarded).
+on:
+  push:
+    branches:
+      - main
 
-## Steps to Run
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-1. Extract the ZIP
-2. Run `flutter pub get`
-3. Run `flutter run`
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-## Config
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.22.0' # yaha aap apna flutter version daalein
 
-Edit `config/app_config.json` and replace test AdMob IDs with your real IDs once available.
+      - name: Install dependencies
+        run: flutter pub get
 
-## GitHub Actions Build
+      - name: Build APK
+        run: flutter build apk --release
 
-- On every push to `main`, APK will be built automatically.
-- Download APK from GitHub Actions artifacts.
-Test build trigger
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+          
