@@ -17,3 +17,4 @@ Edit `config/app_config.json` and replace test AdMob IDs with your real IDs once
 
 - On every push to `main`, APK will be built automatically.
 - Download APK from GitHub Actions artifacts.
+Test build trigger
