@@ -1,3 +1,4 @@
+Updated for APK build test
 # VijayAI Connect
 
 This is a Flutter app integrated with Google AdMob test ads (Banner, Interstitial, Rewarded).
